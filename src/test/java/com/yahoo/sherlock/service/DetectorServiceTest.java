@@ -251,7 +251,7 @@ public class DetectorServiceTest {
             assertEquals(detectorService.runDetection(Collections.emptyList(), 0.0, config, 1234, null, null, 1).size(), 1);
         }
         verify(prophetAPIService, times(0)).configureWith(any());
-        verify(mockEgadsAPIService, times(12)).configureWith(any());
+        verify(mockEgadsAPIService, times(14)).configureWith(any());
     }
 
     /**

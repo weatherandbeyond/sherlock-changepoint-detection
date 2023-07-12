@@ -228,7 +228,7 @@ public class DetectorConfigTest {
     public void testGetAllEgadsValues() {
         // Compare all values with expected list of values
         Assert.assertEquals(DetectorConfig.TimeSeriesModel.getAllEgadsValues(),
-                Arrays.asList("AutoForecastModel", "DoubleExponentialSmoothingModel", "MovingAverageModel", "MultipleLinearRegressionModel", "NaiveForecastingModel",
+                Arrays.asList("InitialWindowAverageModel", "NullModel", "AutoForecastModel", "DoubleExponentialSmoothingModel", "MovingAverageModel", "MultipleLinearRegressionModel", "NaiveForecastingModel",
                         "OlympicModel", "PolynomialRegressionModel", "RegressionModel", "SimpleExponentialSmoothingModel", "TripleExponentialSmoothingModel",
                         "WeightedMovingAverageModel", "SpectralSmoother"));
     }
@@ -240,7 +240,7 @@ public class DetectorConfigTest {
     public void testGetAllValues() {
         // Compare all values with expected list of values
         Assert.assertEquals(DetectorConfig.TimeSeriesModel.getAllValues(),
-                Arrays.asList("AutoForecastModel", "DoubleExponentialSmoothingModel", "MovingAverageModel", "MultipleLinearRegressionModel", "NaiveForecastingModel",
+                Arrays.asList("InitialWindowAverageModel", "NullModel", "AutoForecastModel", "DoubleExponentialSmoothingModel", "MovingAverageModel", "MultipleLinearRegressionModel", "NaiveForecastingModel",
                         "OlympicModel", "PolynomialRegressionModel", "Prophet", "RegressionModel", "SimpleExponentialSmoothingModel", "TripleExponentialSmoothingModel",
                         "WeightedMovingAverageModel", "SpectralSmoother"));
     }

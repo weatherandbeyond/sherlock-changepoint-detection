@@ -100,6 +100,8 @@ public class DetectorConfig {
      * EGADS timeseries models.
      */
     public enum TimeSeriesModel {
+        InitialWindowAverageModel,
+        NullModel,
         AutoForecastModel,
         DoubleExponentialSmoothingModel,
         MovingAverageModel,
@@ -894,6 +896,14 @@ public class DetectorConfig {
      */
     @DetectorParam(name = "OUTPUT", def = "STD_OUT")
     private String output;
+
+    /**
+     * For InitialWindowAverageModel:
+     * number of timesteps at the beginning of the timeseries
+     * to take the average of
+     */
+    @DetectorParam(name = "NUM_INITIAL_TIMESTEPS", def = "24")
+    private String initialWindowAverageModelNumInitialTimesteps;
 
     /**
      * The number of possible time-shifts allowed
