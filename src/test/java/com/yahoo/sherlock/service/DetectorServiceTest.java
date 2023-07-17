@@ -212,7 +212,6 @@ public class DetectorServiceTest {
         when(detectorService.runDetection(any(), anyDouble(), any(), anyInt(), anyString(), any(Granularity.class), anyInt())).thenCallRealMethod();
         assertEquals(detectorService.runDetection(Collections.emptyList(), 0.0, null, 1234, null, null, 1).size(), 1);
         verify(mockEgadsAPIService, times(0)).preRunConfigure(any(), any(), any());
-        verify(mockEgadsAPIService, times(0)).configureDetectionWindow(any(), any(), anyInt());
         verify(mockEgadsAPIService, times(0)).detectAnomalies(anyList(), anyInt());
     }
 
@@ -271,11 +270,9 @@ public class DetectorServiceTest {
         assertEquals(result.size(), 2);
         verify(mockEgadsAPIService, times(0)).configureWith(any());
         verify(mockEgadsAPIService, times(1)).preRunConfigure(any(), any(), anyInt());
-        verify(mockEgadsAPIService, times(1)).configureDetectionWindow(any(), any(), anyInt());
         verify(mockEgadsAPIService, times(1)).detectAnomalies(anyList(), anyInt());
         verify(prophetAPIService, times(0)).configureWith(any());
         verify(prophetAPIService, times(0)).preRunConfigure(any(), any(), anyInt());
-        verify(prophetAPIService, times(0)).configureDetectionWindow(any(), any(), anyInt());
         verify(prophetAPIService, times(0)).detectAnomalies(anyList(), anyInt());
     }
 
@@ -302,11 +299,9 @@ public class DetectorServiceTest {
             assertEquals(result.size(), 3);
             verify(mockEgadsAPIService, times(i + 1)).configureWith(any());
             verify(mockEgadsAPIService, times(i + 1)).preRunConfigure(any(), any(), anyInt());
-            verify(mockEgadsAPIService, times(i + 1)).configureDetectionWindow(any(), any(), anyInt());
             verify(mockEgadsAPIService, times(i + 1)).detectAnomalies(anyList(), anyInt());
             verify(prophetAPIService, times(0)).configureWith(any());
             verify(prophetAPIService, times(0)).preRunConfigure(any(), any(), anyInt());
-            verify(prophetAPIService, times(0)).configureDetectionWindow(any(), any(), anyInt());
             verify(prophetAPIService, times(0)).detectAnomalies(anyList(), anyInt());
         }
     }
@@ -332,11 +327,9 @@ public class DetectorServiceTest {
         assertEquals(result.size(), 3);
         verify(mockEgadsAPIService, times(0)).configureWith(any());
         verify(mockEgadsAPIService, times(0)).preRunConfigure(any(), any(), anyInt());
-        verify(mockEgadsAPIService, times(0)).configureDetectionWindow(any(), any(), anyInt());
         verify(mockEgadsAPIService, times(0)).detectAnomalies(anyList(), anyInt());
         verify(prophetAPIService, times(1)).configureWith(any());
         verify(prophetAPIService, times(1)).preRunConfigure(any(), any(), anyInt());
-        verify(prophetAPIService, times(1)).configureDetectionWindow(any(), any(), anyInt());
         verify(prophetAPIService, times(1)).detectAnomalies(anyList(), anyInt());
     }
 
@@ -412,7 +405,6 @@ public class DetectorServiceTest {
             assertEquals(5, reslist.size());
             verify(mockEgadsAPIService, times(i + 1)).configureWith(any());
             verify(mockEgadsAPIService, times(i + 1)).preRunConfigure(any(), any(), anyInt());
-            verify(mockEgadsAPIService, times(i + 1)).configureDetectionWindow(query.getRunTime() / 60, query.getGranularity().toString(), 2);
             verify(mockEgadsAPIService, times(5 * (i + 1))).detectAnomaliesAndForecast(any(TimeSeries.class));
         }
     }
@@ -440,7 +432,6 @@ public class DetectorServiceTest {
         assertEquals(5, reslist.size());
         verify(prophetAPIService, times(1)).configureWith(any());
         verify(prophetAPIService, times(1)).preRunConfigure(any(), any(), anyInt());
-        verify(prophetAPIService, times(1)).configureDetectionWindow(query.getRunTime() / 60, query.getGranularity().toString(), 2);
         verify(prophetAPIService, times(1)).detectAnomaliesAndForecast(anyList());
     }
 
