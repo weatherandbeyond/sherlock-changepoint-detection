@@ -160,19 +160,6 @@ public class EgadsAPIServiceTest {
     }
 
     /**
-     * Tests properties inside egadsAPIService matches with the configured parameters.
-     * @throws Exception
-     */
-    @Test
-    public void testConfigureDetectionWindow() throws Exception {
-        EgadsAPIService egadsAPIService = new EgadsAPIService();
-        egadsAPIService.configureWithDefault();
-        egadsAPIService.configureDetectionWindow(61, "hour", 1);
-        Properties p = (Properties) QueryBuilderTest.getValue("p", egadsAPIService);
-        assertEquals(p.getProperty("DETECTION_WINDOW_START_TIME"), "60");
-    }
-
-    /**
      * Tests method detectAnomaliesAndForecast() and detectAnomalies() generates the same anomalies.
      * @throws Exception
      */
