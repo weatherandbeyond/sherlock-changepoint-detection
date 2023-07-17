@@ -244,8 +244,6 @@ public class DetectorService {
         }
         // Set Standard deviation and Olympic Model's Base Window
         detectorAPIService.preRunConfigure(sigmaThreshold, granularity, granularityRange);
-        // Set the detection window for anomaly detection models
-        detectorAPIService.configureDetectionWindow(endTimeMinutes, frequency, granularityRange);
         // Anomaly detection
         anomalies.addAll(detectorAPIService.detectAnomalies(timeSeriesList, endTimeMinutes));
         log.info("Anomaly points added to result.");
@@ -317,9 +315,6 @@ public class DetectorService {
         }
         detectorAPIService.configureWith(config);
         detectorAPIService.preRunConfigure(sigmaThreshold, query.getGranularity(), query.getGranularityRange());
-        if (detectionWindow != null) {
-            detectorAPIService.configureDetectionWindow(query.getRunTime() / 60, query.getGranularity().toString(), detectionWindow + 1);
-        }
         results.addAll(detectorAPIService.detectAnomaliesAndForecast(timeSeriesList));
         return results;
     }

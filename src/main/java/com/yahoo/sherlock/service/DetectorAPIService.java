@@ -154,17 +154,6 @@ public abstract class DetectorAPIService {
     }
 
     /**
-     * Method to set the detection window for anomalies in the given job.
-     * @param endTimeMinutes last datapoint timestamp in timeseries
-     * @param frequency frequency of the job
-     * @param nLookBack number of frequency to lookback
-     */
-    public void configureDetectionWindow(Integer endTimeMinutes, String frequency, int nLookBack) {
-        Long detectionStartTime = (endTimeMinutes - nLookBack * Granularity.getValue(frequency).getMinutes()) * 60L;
-        p.setProperty(DETECTION_WINDOW_START_TIME, detectionStartTime.toString());
-    }
-
-    /**
      * Method to compute the Anomalies via a given Egads Anomaly Detector instance.
      * @param anomalyDetector an Egads Anomaly Detector instance.
      * @param timeseries original timeseries
