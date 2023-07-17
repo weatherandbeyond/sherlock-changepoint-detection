@@ -987,6 +987,14 @@ public class DetectorConfig {
     @DetectorParam(name = "CONFIDENCE", def = "0.8")
     private String confidence;
     /**
+     * For AdaptiveKernelDensityChangePointDetector:
+     * should the post window average (observed) value be used as the actual value?
+     */
+    @DetectorParam(name = "USE_POST_WINDOW_AVERAGE_AS_ACTUAL_VALUE", def = "false")
+    private String usePostWindowAverageAsActualValue;
+
+
+    /**
      * Window size for spectral smoothing. Should be a
      * value larger than the size of the most important
      * seasonality.
